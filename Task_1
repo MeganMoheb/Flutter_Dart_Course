@@ -1,0 +1,84 @@
+<!doctype html>
+<html class="no-js" lang="eng">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+</head>
+
+<body>
+
+<a href="https://www.linkedin.com/in/megan-moheb-52461b359/"> About </a>|
+<a href ="https://www.w3schools.com/html/html_links.asp" > Skills </a>|
+<a href="https://github.com/MeganMoheb"> Project </a>|
+<a href=""> contact </a>
+  <hr>
+
+<h1>About me</h1>
+<p> <h3> Hello! my name is Megan Moheb, currently persuing flutter & dart course, css and html learner,<br>
+    The fear of the Lord is the beginning of knowledge. Proverbs 1:7</h3></p>
+  <hr>
+<br>
+<h1> Technical skills </h1>
+<p > <ul>
+    <li><h4> Data structure</h4></li>
+    <li><h4> File structure</h4></li>
+    <li><h4> OOP</h4></li>
+    <li><h4> HTML&CSS</h4></li>
+    <li><h4> C++</h4></li>
+    <li><h4>  Python</h4></li>
+    <li><h4> built many websites using HTML & CSS</h4></li>
+    <li><h4> made Tick_tack_toe game once with Python and once with C++ </h4></li>
+  </ul>
+  </p>
+  <hr><p>
+<h1>Experince</h1>
+  <h3>💻🧠PROJECTS </h3>
+  <h4> built up Tick_tack_toe game once with Python and once with C++, As well as connect4 using C++,
+    gained experience with virtual judge which increased my analytical, problem_solving skills  </h4>
+  <h3>SOFT SKILLS </h3>
+  <h4>🛫 Gratitude for the Experience travelling to german I had a handful of opportunities to gain social skills
+  by engaging in volunteer works with many people of different backgrounds and cultures. Moreover, I practiced my
+  english language as well as A1 german level.</h4>
+  </p>
+  <hr>
+<h1>CONTACT ME</h1>
+  <form action="">
+    <label for="name">Name:</label><br>
+    <input type="text" id="name" name="name">
+      <br><br>
+          <label for="email">Email:</label><br>
+          <input type="email" id="email" name="email"><br><br>
+      <label for="name">Message:</label><br>
+      <textarea  type="email"  name="message" rows="7" col="40"></textarea><br><br>
+      <button type="submit" >submit</button>
+
+      <table broder="0" >
+          <tr>
+              <th>Future work</th>
+              <th>state</th>
+
+          </tr>
+          <tr>
+              <td>flutter</td>
+              <td>  &nbsp;&nbsp;|under constraction</td>
+          </tr>
+          <tr>
+              <td>dart</td>
+              <td>&nbsp;&nbsp;|under constraction</td>
+
+          </tr>
+          <tr>
+              <td>python essentials2  </td>
+              <td>  &nbsp; |near future</td>
+
+          </tr>
+
+      </table>
+
+  </form>
+
+</body>
+
+</html>
