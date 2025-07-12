@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+<div class="page">
+     <div  class="header">
+          <h2 class="logo">Megan <br>&nbsp;&nbsp; <span> Moheb</span></h2>
+    <nav>
+        <ul>
+            <li><a href="https://www.linkedin.com/in/megan-moheb-52461b359/"> About </a></li>
+            <li><a href ="https://www.linkedin.com/in/megan-moheb-52461b359/details/skills/" > Skills </a></li>
+            <li><a href="https://github.com/MeganMoheb"> Project </a></li>
+            <li><a href="Megan%20Moheb.pdf" target="_blank" download>CV</a></li>
+
+        </ul>
+    </nav>
+</div>
+
+    <br> <br>
+       <div class="about_me_sec">
+                   <h1>About me</h1>
+                    <br>
+           <p> <h3> Hello! my name is Megan Moheb, currently persuing flutter & dart course, css and html learner.<br></h3></p>
+
+            <div class="box">
+            <i class="fas fa-quote-left fa2"></i>
+            <div class="text">
+            <i class="fas fa-quote-right fa1"></i>
+
+            <div class="quote-content">
+                <h3>My Quote</h3>
+                <p>The fear of the Lord is the beginning of knowledge. Proverbs 1:7</p>
+            </div>
+    </div>
+    </div>
+</div>
+
+<br> <br>
+
+
+               <div class="ts_section">
+                 <h1 class="h1_ts"> Technical skills </h1>
+                      <ul class="technical_skills_list">
+                         <li><h4> Data structure</h4></li>
+                         <li><h4> File structure</h4></li>
+                         <li><h4> OOP</h4></li>
+                         <li><h4> HTML&CSS</h4></li>
+                         <li><h4> C++</h4></li>
+                         <li><h4>  Python</h4></li>
+                      </ul>
+               </div>
+
+
+
+                  <div class="exp_sec">
+                     <br>
+                     <h1 class="exp">Experince</h1>
+                       <br>
+                      <h3>💻🧠PROJECTS </h3>
+                      <br>
+                     <h4 > built up Tick_tack_toe game once with Python and once with C++, As well as connect4 using C++,
+                     gained experience with virtual judge which increased my analytical, problem_solving skills  </h4>
+                     <br>
+                     <h3>SOFT SKILLS </h3>
+                      <br>
+                     <h4>🛫 Gratitude for the Experience travelling to german I had a handful of opportunities to gain social skills
+                      by engaging in volunteer works with many people of different backgrounds and cultures. Moreover, I practiced my
+                      english language as well as A1 german level.</h4>
+                     </div>
+
+
+
+
+
+    <table border="0" >
+        <tr>
+            <th>Future work</th>
+            <th>state</th>
+
+        </tr>
+        <tr>
+            <td>flutter</td>
+            <td>  &nbsp;&nbsp;|under constraction</td>
+        </tr>
+        <tr>
+            <td>dart</td>
+            <td>&nbsp;&nbsp;|under constraction</td>
+
+        </tr>
+        <tr>
+            <td>python essentials2  </td>
+            <td>  &nbsp; |near future</td>
+
+        </tr>
+
+    </table>
+
+                  <footer>
+                     <div id="container">
+                         <div class="row">
+
+
+                             <div class="footer_cols1">
+                                 <h2 class="intreset"> INTREST</h2>
+                                 <ul>
+                                     <li><h4>1-Data Aanalysis</h4></li>
+                                     <li><h4> 2-Programming</h4></li>
+                                     <li><h4> 3-Mobile Applications</h4></li>
+                                     <li><h4> 4-AI & MACHINE LEARNING</h4></li>
+                                 </ul>
+                             </div>
+
+
+                             <div class="footer_cols2">
+                                 <h2 class="contactme">CONTACT ME</h2>
+                        <form action="">
+                                      <div class="responsive">
+                                 <label for="name"  >Name:</label><br>
+                                 <input type="text" id="name" name="name">
+                                 <br><br>
+                                 <label for="name">Message:</label><br>
+                                 <textarea name="message" rows="7" cols="40"></textarea><br><br>
+                                 <button type="submit" value="submit" class="inputsubmit" >submit</button>
+                                      </div>
+                        </form>
+                            </div>
+
+                    </div>
+                    </div>
+                  </footer>
+
+
+
+</div>
+</body>
+
+</html>
