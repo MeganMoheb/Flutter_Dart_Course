@@ -1,1 +1,294 @@
 
+
+//future,stream problem
+//-----------------------------------------Q1----------------------------------------------
+import 'dart:io';
+
+Future<int> sumStream(Stream<int> stream) async {
+  var sum = 0;
+  await for (final value in stream) {
+    sum += value;
+  }
+  return sum;
+}
+
+void main() async {
+  Stream<int> myStream = Stream.fromIterable([1, 2, 3, 4, 5]);
+  int total = await sumStream(myStream);
+  print('The sum is: $total');
+}
+
+//-----------------------------------------Q2----------------------------------------------
+
+
+import 'dart:io';
+
+void main() {
+  List<Map<String, dynamic>> users = [];
+
+  for (int i = 0; i < 2; i++) {
+    stdout.write('Enter name and age for user ${i + 1} : ');
+    String? input = stdin.readLineSync();
+
+    if (input != null && input.trim().isNotEmpty) {
+      List<String> parts = input.trim().split(' ');
+
+      if (parts.length == 2) {
+        String name = parts[0];
+        int? age = int.tryParse(parts[1]);
+
+        if (age != null) {
+          users.add({'name': name, 'age': age});
+        } else {
+          print('Invalid age. Please enter a number.');
+          i--;
+        }
+      } else {
+        print('Please enter exactly: name age');
+        i--;
+      }
+    } else {
+      print('Empty input. Try again.');
+      i--;
+    }
+  }
+
+  int age1 = users[0]['age'] as int;
+  int age2 = users[1]['age'] as int;
+
+  var result = 100 - (age1 + age2);
+  print('Result: $result');
+}
+
+//-----------------------------------------Q3----------------------------------------------
+
+import 'dart:io';
+
+void main() {
+  stdout.write("Hi, please choose a number: ");
+  int? number = int.parse(stdin.readLineSync()!);
+  if (number % 2 == 0) {
+    print("Chosen number is even");
+  }
+  else {
+    print("Chosen number is odd");
+  }
+}
+
+//-----------------------------------------Q4----------------------------------------------
+
+
+import 'dart:io';
+
+void main() {
+  List<int> a=[1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89];
+  for (var i in a ){
+    if (i<5){
+      print(i);
+    }
+  }
+
+}
+
+//-----------------------------------------Q5----------------------------------------------
+import 'dart:io';
+
+void main() {
+  stdout.write("Please choose a number: ");
+  int number = int.parse(stdin.readLineSync()!);
+  for (var i = 1; i <= number; i++) {
+    if (number % i == 0) {
+      print(i);
+    }
+  }
+}
+
+//-----------------------------------------Q6----------------------------------------------
+
+import 'dart:io';
+
+void main() {
+  List<int> a = [1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89];
+  List<int> b = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13];
+
+  List<int> intersection = [];
+
+  for (var i in a) {
+    if (b.contains(i) && !intersection.contains(i)) {
+      intersection.add(i);
+    }
+  }
+
+  print( intersection);
+}
+
+//-----------------------------------------Q7----------------------------------------------
+
+import 'dart:io';
+
+void main() {
+  List<int> a = [1, 4, 9, 16, 25, 36, 49, 64, 81, 100];
+  Set<int> c = {};
+  for (var i in a){
+    if (i%2==0){
+           c.add(i);
+    }
+  }
+print(c);
+
+}
+
+//-----------------------------------------Q8----------------------------------------------
+
+
+import 'dart:io';
+import 'dart:math';
+
+void main() {
+  List<int> num = [];
+  for (int i = 0; i < 100; i++) {
+    num.add(i);
+  }
+
+  final random = Random();
+  int choice = num[random.nextInt(num.length)];
+
+  while (true) {
+    stdout.write('Guess the number (0–99): ');
+    int userGuess = int.parse(stdin.readLineSync()!);
+
+    if (choice == userGuess) {
+      print("You are a witch!");
+      break;
+    } else {
+      print("You lied to me! Try again.");
+    }
+  }
+}
+
+//-----------------------------------------Q9----------------------------------------------
+
+import 'dart:io';
+
+void main() {
+  stdout.write("Please give us a number: ");
+  int chosenNumber = int.parse(stdin.readLineSync()!);
+
+  checkPrime(chosenNumber);
+}
+
+void checkPrime(int number) {
+  if (number < 2) {
+    print("The chosen number is not a prime");
+    return;
+  }
+
+  bool isPrime = true;
+
+  for (int i = 2; i <= number ~/ 2; i++) {
+    if (number % i == 0) {
+      isPrime = false;
+      break;
+    }
+  }
+
+  if (isPrime) {
+    print("The chosen number is a prime");
+  } else {
+    print("The chosen number is not a prime");
+  }
+}
+
+//-----------------------------------------Q10----------------------------------------------
+import 'dart:io';
+import 'dart:math';
+
+void main() {
+  List<int> a = [5, 10, 15, 20, 25];
+
+  print(flnum(a));
+}
+
+List<int> flnum(List<int> a) {
+  List<int> c = [];
+
+  for (var i in a) {
+    if (i == a[0] || i == a[a.length - 1]) {
+      c.add(i);
+    }
+  }
+
+  return c;
+}
+
+//-----------------------------------------Q11----------------------------------------------
+
+
+import 'dart:io';
+import 'dart:math';
+
+void main() {
+
+  int chosenNumber = int.parse(stdin.readLineSync()!);
+
+print (fibicconi(chosenNumber));
+
+}
+
+List<int> fibicconi(int chosenNumber) {
+  List<int> a=[];
+  int first=0;
+  int sec=1;
+  a.add(first);
+  a.add(sec );
+ while (chosenNumber>2){
+    int next=first+sec;
+    first=sec;
+    sec=next;
+    a.add(next);
+    chosenNumber--;
+  }
+  return a;
+}
+
+
+//-----------------------------------------Q12----------------------------------------------
+
+import 'dart:io';
+import 'dart:math';
+
+void main() {
+  int low = 0;
+  int high = 100;
+  int guessCount = 0;
+
+  print("Think of a number between 0 and 100. I will try to guess it!");
+
+  while (true) {
+    int guess = ((low + high) ~/ 2);
+    guessCount++;
+
+    stdout.write("Is your number $guess? (enter 'higher', 'lower', or 'correct'): ");
+    String? response = stdin.readLineSync()?.toLowerCase().trim();
+
+    if (response == 'correct') {
+      print("Yay! I guessed your number in $guessCount tries. 🧠");
+      break;
+    } else if (response == 'higher') {
+      low = guess + 1;
+    } else if (response == 'lower') {
+      high = guess - 1;
+    } else {
+      print("Invalid input. Please type 'higher', 'lower', or 'correct'.");
+      guessCount--;
+    }
+
+  }
+}
+
+
+
+
+
+
+
