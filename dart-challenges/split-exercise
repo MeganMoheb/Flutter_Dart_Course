@@ -1,0 +1,17 @@
+//q14 in https://hackmd.io/@kuzmapetrovich/S1x90jWGP#Exercise-9
+// This prints the words in reverse order
+
+import 'dart:io';
+
+void striing(String sentence) {
+   List<String> word = sentence.split(' ');
+
+   for (int i = word.length - 1; i >= 0; i--) {
+      stdout.write('${word[i]} ');
+   }
+}
+
+void main() {
+   String sentence = stdin.readLineSync()!;
+   striing(sentence);
+}
