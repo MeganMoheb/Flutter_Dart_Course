@@ -1,0 +1,14 @@
+import 'dart:io';
+
+void main() {
+  stdout.write("Enter your full name: ");
+  String? fullName = stdin.readLineSync();
+
+  if (fullName != null && fullName.isNotEmpty) {
+    List<String> separatedNames = fullName.split(' ');
+
+    for (var name in separatedNames) {
+      print(name);
+    }
+  }
+}
