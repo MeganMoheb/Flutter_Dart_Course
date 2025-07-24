@@ -1,0 +1,205 @@
+import 'package:flutter/material.dart';
+
+void main() => runApp(const MyApp());
+
+// Define all colors used in themes
+class AppColors {
+  static const Color appbarLightColor = Color(0xff4442b5);
+  static const Color appbarDarkColor = Color(0xff1badd9);
+
+  static const Color secondaryColor = Color(0xFFE91E63);
+  static const Color whiteApp = Colors.white;
+  static const Color whiteBloc = Color(0xFFF5F5F5);
+
+  static const Color darkBackground = Color(0xFF121212);
+  static const Color darkCard = Color(0xFF1E1E1E);
+}
+
+// Define light and dark theme data
+class AppThemes {
+  static final ThemeData lightTheme = ThemeData(
+    colorScheme: ColorScheme.fromSeed(seedColor: AppColors.appbarLightColor),
+    appBarTheme: AppBarTheme(
+      color: AppColors.appbarLightColor,
+      elevation: 20,
+      centerTitle: true,
+      shadowColor: AppColors.appbarLightColor,
+    ),
+    bottomNavigationBarTheme: BottomNavigationBarThemeData(
+      backgroundColor: AppColors.appbarLightColor,
+      selectedItemColor: Colors.white,
+      unselectedItemColor: Colors.white70,
+    ),
+    bottomSheetTheme: BottomSheetThemeData(
+      backgroundColor: AppColors.whiteBloc,
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
+      ),
+    ),
+    textTheme: const TextTheme(
+      bodySmall: TextStyle(color: AppColors.whiteApp),
+    ),
+    textButtonTheme: TextButtonThemeData(
+      style: TextButton.styleFrom(
+        backgroundColor: AppColors.secondaryColor,
+        alignment: Alignment.bottomCenter,
+        textStyle: const TextStyle(color: Colors.blueAccent),
+      ),
+    ),
+    brightness: Brightness.light,
+    scaffoldBackgroundColor: AppColors.whiteBloc,
+    useMaterial3: true,
+  );
+
+  static final ThemeData darkTheme = ThemeData(
+    colorScheme: ColorScheme.fromSeed(
+      seedColor: AppColors.appbarDarkColor,
+      brightness: Brightness.dark,
+    ),
+    appBarTheme: AppBarTheme(
+      color: AppColors.appbarDarkColor,
+      elevation: 10,
+      centerTitle: true,
+      shadowColor: AppColors.secondaryColor,
+    ),
+    bottomNavigationBarTheme: BottomNavigationBarThemeData(
+      backgroundColor: AppColors.darkCard,
+      selectedItemColor: Colors.tealAccent,
+      unselectedItemColor: Colors.grey,
+    ),
+    bottomSheetTheme: BottomSheetThemeData(
+      backgroundColor: AppColors.darkCard,
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
+      ),
+    ),
+    textTheme: const TextTheme(
+      bodySmall: TextStyle(color: Colors.white70),
+    ),
+    textButtonTheme: TextButtonThemeData(
+      style: TextButton.styleFrom(
+        backgroundColor: Colors.teal,
+        alignment: Alignment.center,
+        textStyle: const TextStyle(color: Colors.white),
+      ),
+    ),
+    brightness: Brightness.dark,
+    scaffoldBackgroundColor: AppColors.darkBackground,
+    useMaterial3: true,
+  );
+}
+
+// Main app widget
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'All-in-One Theme Demo',
+      debugShowCheckedModeBanner: false, 
+      theme: AppThemes.lightTheme,
+      darkTheme: AppThemes.darkTheme,
+      themeMode: ThemeMode.system,
+      home: const HomeScreen(),
+      routes: {
+        '/second': (context) => const SecondScreen(),
+        '/third': (context) => const ThirdScreen(data: 'Hello from Home!'),
+      },
+    );
+  }
+}
+
+// Home screen
+class HomeScreen extends StatelessWidget {
+  const HomeScreen({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: const Text("First Screen")),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            const Text("Push to Second Screen"),
+            const SizedBox(height: 10),
+            TextButton(
+              onPressed: () {
+                Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(builder: (context) => const SecondScreen()),
+                );
+              },
+              child: const Text("PushReplacement to Second Screen"),
+            ),
+            const SizedBox(height: 10),
+            OutlinedButton(
+              onPressed: () {
+                Navigator.pushNamed(context, '/second');
+              },
+              child: const Text("Named Route to Second Screen"),
+            ),
+            const SizedBox(height: 10),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) =>
+                        const ThirdScreen(data: 'From First!'),
+                  ),
+                );
+              },
+              child: const Text("Pass Data to Third Screen"),
+            ),
+            const SizedBox(height: 20),
+            const Text("Hello, World!"),
+            const Text("Hello, World!",
+                style: TextStyle(color: Colors.blue, fontSize: 24)),
+            const Text("Hello, World!",
+                style: TextStyle(fontWeight: FontWeight.bold)),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+// Second screen with white background
+class SecondScreen extends StatelessWidget {
+  const SecondScreen({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Colors.white,
+      appBar: AppBar(title: const Text("Second Screen")),
+      body: const Center(
+        child: Text(
+          "This is the second screen",
+          style: TextStyle(fontSize: 20),
+        ),
+      ),
+    );
+  }
+}
+
+// Third screen that receives and displays data
+class ThirdScreen extends StatelessWidget {
+  final String data;
+  const ThirdScreen({super.key, required this.data});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: const Text("Third Screen")),
+      body: Center(
+        child: Text(
+          "Received: $data",
+          style: const TextStyle(fontSize: 20),
+        ),
+      ),
+    );
+  }
+}
