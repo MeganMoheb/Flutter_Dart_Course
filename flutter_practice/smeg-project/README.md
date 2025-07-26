@@ -3,7 +3,10 @@ A modern and sleek Flutter application that showcases kitchen appliances like fr
 
 
 
-![image alt][https://github.com/MeganMoheb/Flutter_Dart_Course/blob/80295f3fcf2be76babde1afe6a95a81f81b48457/flutter_practice/smeg-project/Screenshot%20(479).png]
+## 🖼️ App Screenshot
+
+![Home Screen](https://github.com/MeganMoheb/Flutter_Dart_Course/blob/80295f3fcf2be76babde1afe6a95a81f81b48457/flutter_practice/smeg-project/Screenshot%20(479).png?raw=true)
+
 
 
 
