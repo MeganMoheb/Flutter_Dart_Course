@@ -1,0 +1,329 @@
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(const MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Smeg Store',
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData(
+        textTheme: const TextTheme(
+          headlineLarge: TextStyle(
+            fontSize: 24,
+            color: Color.fromARGB(255, 7, 30, 48),
+            fontWeight: FontWeight.bold,
+          ),
+          bodyMedium: TextStyle(
+            fontSize: 20,
+            color: Colors.white,
+          ),
+        ),
+        primarySwatch: Colors.deepPurple,
+      ),
+      home: const Homescreen(),
+    );
+  }
+}
+
+class Product {
+  final String name;
+  final String description;
+  final String image;
+  final double price;
+
+  Product(this.name, this.description, this.image, this.price);
+}
+
+final List<Product> products = [
+  Product("Fridge", "Spacious double-door fridge", "assets/fridge.jpg", 8999),
+  Product("Kettle", "Stainless steel kettle 1.7L", "assets/kettle.jpg", 799),
+  Product(
+      "Microwave", "Compact microwave oven 900W", "assets/microwave.jpg", 1299),
+  Product("Blender", "Multispeed blender with glass jar", "assets/blinder.jpg",
+      599),
+];
+
+class Homescreen extends StatefulWidget {
+  const Homescreen({Key? key}) : super(key: key);
+
+  @override
+  State<Homescreen> createState() => _HomescreenState();
+}
+
+class _HomescreenState extends State<Homescreen> {
+  final TextEditingController _searchText = TextEditingController();
+  int myindex = 0;
+
+  final List<Widget> widgetlist = const [
+    ProductListView(),
+    Center(child: Text('Shopping Cart Screen', style: TextStyle(fontSize: 40))),
+    Center(child: Text('Profile Screen', style: TextStyle(fontSize: 40))),
+  ];
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Column(
+        children: [
+          _topBlueSection(context),
+          _horizontalImageList(),
+          Expanded(child: widgetlist[myindex]),
+        ],
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        showUnselectedLabels: false,
+        backgroundColor: Colors.blue,
+        selectedItemColor: const Color.fromARGB(255, 7, 30, 48),
+        type: BottomNavigationBarType.fixed,
+        currentIndex: myindex,
+        onTap: (index) {
+          setState(() {
+            myindex = index;
+          });
+        },
+        items: const [
+          BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.shopping_cart), label: 'Cart'),
+          BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Profile'),
+        ],
+      ),
+    );
+  }
+
+  Widget _topBlueSection(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 8),
+      decoration: _decoration(),
+      child: Column(
+        children: [
+          _topBar(context),
+          const SizedBox(height: 27),
+          SizedBox(height: 35, child: _searchBox()),
+          const SizedBox(height: 20),
+        ],
+      ),
+    );
+  }
+
+  BoxDecoration _decoration() {
+    return BoxDecoration(
+      borderRadius: const BorderRadius.vertical(bottom: Radius.circular(10)),
+      gradient: LinearGradient(
+        colors: [Colors.white, Colors.blue.shade300],
+        begin: Alignment.topCenter,
+        end: Alignment.bottomCenter,
+      ),
+    );
+  }
+
+  Widget _topBar(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Row(
+          children: [
+            Image.asset('assets/download.jpg', scale: 30),
+            Expanded(
+              child: Center(
+                child: Text(
+                  'smeg',
+                  style: Theme.of(context).textTheme.headlineLarge,
+                ),
+              ),
+            ),
+            const CircleAvatar(
+              radius: 15,
+              backgroundImage: AssetImage('assets/IMG 2.jpg'),
+            ),
+          ],
+        ),
+        const SizedBox(height: 10),
+        Text(
+          'Hello!\nWe are here to help',
+          style: Theme.of(context).textTheme.bodyMedium,
+          textAlign: TextAlign.left,
+        ),
+      ],
+    );
+  }
+
+  Widget _searchBox() {
+    return TextFormField(
+      controller: _searchText,
+      decoration: InputDecoration(
+        hintText: 'Search...',
+        contentPadding: EdgeInsets.zero,
+        filled: true,
+        fillColor: Colors.white,
+        prefixIcon: const Icon(Icons.search),
+        suffixIcon: IconButton(
+          icon: const Icon(Icons.close),
+          onPressed: () => _searchText.clear(),
+        ),
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(10),
+        ),
+      ),
+    );
+  }
+
+  Widget _horizontalImageList() {
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 10),
+      child: SingleChildScrollView(
+        scrollDirection: Axis.horizontal,
+        padding: const EdgeInsets.symmetric(horizontal: 12),
+        child: Row(
+          children: [
+            buildImageCard('assets/fridge.jpg', 'Fridge'),
+            const SizedBox(width: 12),
+            buildImageCard('assets/microwave.jpg', 'Microwave'),
+            const SizedBox(width: 12),
+            buildImageCard('assets/kettle.jpg', 'Kettle'),
+            const SizedBox(width: 12),
+            buildImageCard('assets/blinder.jpg', 'Blender'),
+            const SizedBox(width: 12),
+            buildImageCard('assets/coffee.jpg', 'Coffee'),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget buildImageCard(String imagePath, String label) {
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        Container(
+          padding: const EdgeInsets.all(10),
+          decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.circular(16),
+            boxShadow: const [
+              BoxShadow(
+                color: Colors.black12,
+                blurRadius: 5,
+                offset: Offset(0, 3),
+              ),
+            ],
+          ),
+          child: Image.asset(
+            imagePath,
+            width: 60,
+            height: 60,
+            fit: BoxFit.contain,
+          ),
+        ),
+        const SizedBox(height: 8),
+        Text(
+          label,
+          style: const TextStyle(
+            fontSize: 14,
+            color: Color.fromARGB(255, 7, 30, 48),
+          ),
+        ),
+      ],
+    );
+  }
+}
+
+class ProductListView extends StatelessWidget {
+  const ProductListView({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return ListView.builder(
+      itemCount: products.length,
+      padding: const EdgeInsets.all(16),
+      itemBuilder: (context, index) {
+        final product = products[index];
+        return Card(
+          margin: const EdgeInsets.only(bottom: 20),
+          shape:
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
+          child: Padding(
+            padding: const EdgeInsets.all(12.0),
+            child: Row(
+              children: [
+                ClipRRect(
+                  borderRadius: BorderRadius.circular(12),
+                  child: Image.asset(
+                    product.image,
+                    width: 100,
+                    height: 100,
+                    fit: BoxFit.cover,
+                  ),
+                ),
+                const SizedBox(width: 16),
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        product.name,
+                        style: const TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold,
+                          color: Color.fromARGB(255, 7, 30, 48),
+                        ),
+                      ),
+                      const SizedBox(height: 6),
+                      Text(
+                        product.description,
+                        style: const TextStyle(
+                          fontSize: 14,
+                          color: Color.fromARGB(255, 7, 30, 48),
+                        ),
+                      ),
+                      const SizedBox(height: 8),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            "EGP ${product.price}",
+                            style: const TextStyle(
+                              color: Colors.deepPurple,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          ElevatedButton(
+                            onPressed: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (_) => const CartPage()),
+                              );
+                            },
+                            child: const Text("Add to Cart"),
+                          ),
+                        ],
+                      )
+                    ],
+                  ),
+                )
+              ],
+            ),
+          ),
+        );
+      },
+    );
+  }
+}
+
+class CartPage extends StatelessWidget {
+  const CartPage({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: const Text("Your Cart")),
+      body: const Center(child: Text("Cart is empty for now!")),
+    );
+  }
+}
